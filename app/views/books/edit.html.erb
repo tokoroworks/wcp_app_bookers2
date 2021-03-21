@@ -1,0 +1,22 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>Editing Book</h2>
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %> error occored!!
+      <% @book.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+    <!-- form_with部分 -->
+    <%= form_with model:@book, url:"/books/#{@book.id}", local:true do |f| %>
+      <h4>title</h4>
+      <%= f.text_field :title %>
+      <h4>Opinion</h4>
+      <%= f.text_area :body %><br />
+      <%= f.submit 'Update Book', class: "btn-primary" %><br />
+      <%= link_to "Show", book_path(@book.id) %><span> | </span><%= link_to "Back", books_path %>
+    <% end %>
+  </div>
+  </div>
+</div>

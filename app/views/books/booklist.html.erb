@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render 'users/userinfo', l_user: @user %>
+      <%= render 'books/new', book: @book %>
+    </div>
+    <div class="col">
+      <h1>Books</h1>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>title</th>
+        <th>opinion</th>
+      </tr>
+      <% @books.each do |bk| %>
+      <tr>
+        <td><%= link_to bk.title, books_path(bk.id) %></td>
+        <td><%= bk.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>

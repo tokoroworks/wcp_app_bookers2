@@ -1,0 +1,19 @@
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %> error occored!!
+      <% @book.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <%= render 'users/userinfo', l_user: @user %>
+      <%= render 'books/new', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'books/list', books: @books %>
+    </div>
+  </div>
+</div>

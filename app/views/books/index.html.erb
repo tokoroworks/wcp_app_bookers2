@@ -1,0 +1,36 @@
+<div class="container">
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %> error occored!!
+    <% @book.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/userinfo', l_user: @user %>
+      <%= render 'books/new', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h1>Books</h1>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th></th>
+        <th>title</th>
+        <th>opinion</th>
+      </tr>
+      <% @books.each do |bk| %>
+      <tr>
+        <td><%= link_to user_path(bk.user_id) do %>
+          <%= attachment_image_tag bk.user, :profile_image, fallback: "no_image.png", size:"30x30" %>
+          <% end %>
+        </td>
+        <td><%= link_to bk.title, book_path(bk.id) %></td>
+        <td><%= bk.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
