@@ -31,7 +31,7 @@
         <% if @book.favorited_by?(@user,) %>
           <td>
             <%= link_to book_favorites_path(bk), method: :delete do %>
-              💛<%= bk.favorites.count %>いいね
+              💛<%= bk.favorites.count %>いいいね
             <% end %>
           </td>
         <% else %>
