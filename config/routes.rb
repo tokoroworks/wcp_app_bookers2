@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "homes#top", as: 'root'
-  resources :books, only:[:new, :create, :index, :show, :destroy]
+  resources :books, only:[:new, :create, :index, :show, :destroy]do
+    resource :favorites, only:[:create, :destroy]
+  end
   resources :users, only:[:show, :edit, :update]
   get 'home/about' => 'homes#about', as: 'about'
   get 'users' => 'users#userlist', as: 'users'
