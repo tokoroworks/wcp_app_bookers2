@@ -11,11 +11,25 @@
       <tr>
         <th>title</th>
         <th>opinion</th>
+        <th>favorite</th>
       </tr>
       <% @books.each do |bk| %>
       <tr>
         <td><%= link_to bk.title, books_path(bk.id) %></td>
         <td><%= bk.body %></td>
+        <% if bk.favorited_by?(current_user) %>
+          <td>
+            <%= link_to books_favorites_path(book), method: :delete do %>
+              💛<%= bk.favorites.count %>いいね
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to books_favorites_path(book), method: :post do %>
+              ♡<%= bk.favorites.count %>いいね
+            <% end %>
+          </td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
