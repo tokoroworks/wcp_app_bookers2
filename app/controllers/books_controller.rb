@@ -21,7 +21,9 @@ class BooksController < ApplicationController
   def show
     @bookdetail = Book.find(params[:id])
     @user = User.find(@bookdetail.user_id)
+    @book_comments = BookComment.where(book_id: @bookdetail.id)
     @book = Book.new
+    @book_comment = BookComment.new
   end
   def edit
     # render用
