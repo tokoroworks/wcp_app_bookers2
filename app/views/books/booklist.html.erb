@@ -15,6 +15,7 @@
       </tr>
       <% @books.each do |bk| %>
       <tr>
+        byebug
         <td><%= link_to bk.title, books_path(bk.id) %></td>
         <td><%= bk.body %></td>
         <% if bk.favorited_by?(current_user,bk) %>
